@@ -54,7 +54,7 @@ const Residencies = () => {
   const handleConfirm = async () => {
     if (selectedService) {
       const orderData = {
-        serviceId: selectedService._id,
+        serviceId: selectedService.id,
         clientId: localStorage.getItem('id'),
         employeeId: 1,
         size: size,
