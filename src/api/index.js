@@ -60,9 +60,9 @@ class API {
     }
   }
 
-  static async service(dataService) {
+  static async createService(dataService) {
     try {
-      const response = await axios.post(`${API_BASE_URL}/user`, dataService);
+      const response = await axios.post(`${API_BASE_URL}/service`, dataService);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -71,7 +71,7 @@ class API {
 
   static async getService() {
     try {
-      const response = await axios.get(`${API_BASE_URL}/user`);
+      const response = await axios.get(`${API_BASE_URL}/service`);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -108,7 +108,7 @@ class API {
     }
   }
 
-  static async payment(dataPayment) {
+  static async createPayment(dataPayment) {
     try {
       const response = await axios.post(`${API_BASE_URL}/payment`, dataPayment);
       return response.data;

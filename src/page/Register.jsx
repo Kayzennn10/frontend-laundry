@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast, Toaster } from 'react-hot-toast';
 import API from "../api";
 
 const Register = () => {
@@ -19,9 +20,15 @@ const Register = () => {
     e.preventDefault();
     setError("");
 
+    // Menampilkan loading toast
+    const loadingToast = toast.loading('Creating your account...');
+
     try {
       // Validasi input dasar
       if (!register.email || !register.password) {
+        toast.error('Email dan password harus diisi', {
+          id: loadingToast,
+        });
         setError("Email dan password harus diisi");
         return;
       }
@@ -29,12 +36,18 @@ const Register = () => {
       // Validasi format email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(register.email)) {
+        toast.error('Format email tidak valid', {
+          id: loadingToast,
+        });
         setError("Format email tidak valid");
         return;
       }
 
       // Validasi password
       if (register.password.length < 6) {
+        toast.error('Password minimal 6 karakter', {
+          id: loadingToast,
+        });
         setError("Password minimal 6 karakter");
         return;
       }
@@ -45,17 +58,58 @@ const Register = () => {
         throw new Error("Registrasi gagal");
       }
 
-      // Redirect ke halaman login setelah berhasil register
-      navigate("/login");
+      // Update loading toast menjadi success
+      toast.success('Registrasi berhasil! Silakan login.', {
+        id: loadingToast,
+      });
+
+      // Delay navigasi sedikit untuk memberikan waktu toast muncul
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
 
     } catch (error) {
       console.error(error);
-      setError(error.message || "Registrasi gagal. Silakan coba lagi.");
+      const errorMessage = error.message || "Registrasi gagal. Silakan coba lagi.";
+      
+      // Update loading toast menjadi error
+      toast.error(errorMessage, {
+        id: loadingToast,
+      });
+      
+      setError(errorMessage);
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+      {/* Tambahkan Toaster component */}
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          // Styling untuk semua toast
+          duration: 3000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+          // Kustomisasi untuk toast success
+          success: {
+            duration: 3000,
+            theme: {
+              primary: '#4aed88',
+            },
+          },
+          // Kustomisasi untuk toast error
+          error: {
+            duration: 4000,
+            theme: {
+              primary: '#ff4b4b',
+            },
+          },
+        }}
+      />
       <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
           <div>
@@ -68,7 +122,6 @@ const Register = () => {
           <div className="mt-12 flex flex-col items-center">
             <h1 className="text-2xl xl:text-3xl font-extrabold">Sign up</h1>
             
-            {/* Tampilkan pesan error jika ada */}
             {error && (
               <div className="w-full max-w-xs mt-4 p-2 bg-red-100 text-red-700 rounded">
                 {error}

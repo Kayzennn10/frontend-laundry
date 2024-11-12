@@ -1,0 +1,56 @@
+[
+  { "id" : 1,
+    "name": "Carpet Cleaning",
+    "price": "1000000000",
+    "detail": "Professional carpet cleaning service for carpet cleaning",
+    "image": "./carpetClean.webp"
+  },
+  { "id" : 2,
+    "name": "Window Cleaning",
+    "price": "1000000000",
+    "detail": "Thorough window cleaning for a sparkling home",
+    "image": "./window.jpeg"
+  },
+  { "id" : 3,
+    "name": "Deep Cleaning",
+    "price": "10000000000",
+    "detail": "Intensive deep cleaning for a fresh and sanitized home",
+    "image": "./deepclean.jpeg"
+  },
+  { "id" : 4,
+    "name": "Move-in Clean",
+    "price": "1000000000",
+    "detail": "Cleaning service for a new home before moving in",
+    "image": "./Moveinclean.jpeg"
+  },
+  { "id" : 5,
+    "name": "Move-out Clean",
+    "price": "1000000000",
+    "detail": "Cleaning service for a home after moving out",
+    "image": "./Moveoutclean.jpeg"
+  },
+  { "id" : 6,
+    "name": "Oven Cleaning",
+    "price": "1000000000",
+    "detail": "Professional oven cleaning for a spotless kitchen",
+    "image": "./ovenclean.webp"
+  },
+  { "id" : 7,
+    "name": "Bathroom Cleaning",
+    "price": "1000000000",
+    "detail": "Thorough cleaning of bathroom fixtures and surfaces",
+    "image": "./bathroom-clean.webp"
+  },
+  { "id" : 8,
+    "name": "Kitchen Cleaning",
+    "price": "1000000000",
+    "detail": "Cleaning of kitchen appliances, countertops, and cabinets",
+    "image": "./Kitchen-clean.webp"
+  },
+  { "id" : 9,
+    "name": "Dusting Service",
+    "price": "1000000000",
+    "detail": "Dusting and polishing of furniture and surfaces",
+    "image": "./Dustingclean.jpeg"
+  }
+]
